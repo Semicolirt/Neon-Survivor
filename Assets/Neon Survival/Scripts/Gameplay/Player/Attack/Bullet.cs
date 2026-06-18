@@ -50,14 +50,15 @@ public class Bullet : MonoBehaviour
         int hitCount = Physics2D.OverlapCircleNonAlloc(transform.position, bulletData.hitRadius, hitResults, enemyLayer);
         for (int i = 0; i < hitCount; i++)
         {
-            EnemyStats enemyStats = hitResults[i].GetComponent<EnemyStats>();
-            if (enemyStats != null)            {
-                enemyStats.OnSelfHit(); // Gọi hiệu ứng hit trên EnemyStats (nếu có)
+            EnemyController enemyController = hitResults[i].GetComponent<EnemyController>();
+            if (enemyController != null)
+            {
+                enemyController.OnSelfHit(); // Gọi hiệu ứng hit trên EnemyController (nếu có)
             }
             HealthComponent enemyHealth = hitResults[i].GetComponent<HealthComponent>();
             if (enemyHealth != null)
             {
-                float finalDamage = bulletData.damage * (1f + (playerStats != null ? playerStats.damageMultiplier : 1f)); // Có thể thêm logic tính toán damage dựa trên các yếu tố khác
+                float finalDamage = bulletData.damage * (1f + (playerStats != null ? playerStats.damageMultiplier : 0f)); // Có thể thêm logic tính toán damage dựa trên các yếu tố khác
                 enemyHealth.TakeDamage(finalDamage);
             }
             DeSpawnBullet(); // Despawn viên đạn sau khi va chạm

@@ -16,5 +16,5 @@ MonoBehaviour:
   maxHealth: 20
   moveSpeed: 1
   damage: 1
-  armor: 1
+  armor: 0
   experience: 20

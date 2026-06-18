@@ -15,7 +15,7 @@ public class PlayerStatsSO : ScriptableObject, IStats
     public int experienceToNextLevel = 100;
 
     public float MaxHealth => maxHealth;
-    public float Defense => armor;
-    public float Attack => damageMultiplier;
+    public float Armor => armor;
+    public float Damage => damageMultiplier;
     public float MoveSpeed => moveSpeed;
 }

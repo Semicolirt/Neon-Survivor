@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsSO
   maxHealth: 100
-  moveSpeed: 5
+  moveSpeed: 15
   damageMultiplier: 1
   armor: 0
-  level: 1
-  currentExperience: 0
-  experienceToNextLevel: 100
+  level: 6
+  currentExperience: 213
+  experienceToNextLevel: 250

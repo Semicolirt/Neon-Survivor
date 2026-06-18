@@ -5693,6 +5693,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 7520269414231298070, guid: d7e56e1ee7536df4cbafb4c92ff2f0e0, type: 3}
   cardParent: {fileID: 651945560}
   playerStats: {fileID: 11400000, guid: d3ded9d32f0fef742b407622c41f63a6, type: 2}
+  bulletData: {fileID: 11400000, guid: c8e87a063b0eb784cacc81bed8be8bfb, type: 2}
   skillDataList:
   - {fileID: 11400000, guid: c0506b6858a96cf46919fdee0f3f704b, type: 2}
   - {fileID: 11400000, guid: 5a87cd3df5250f84b86c82043a6290e4, type: 2}

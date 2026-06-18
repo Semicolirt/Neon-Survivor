@@ -43,7 +43,7 @@ public class HealthComponent : Subject<HealthData>
     {
         if (currentHealth <= 0) return;
 
-        float effectiveDamage = Mathf.Max(0, damage - stats.Defense);
+        float effectiveDamage = Mathf.Max(0, damage - stats.Armor);
         currentHealth -= effectiveDamage;
         currentHealth = Mathf.Clamp(currentHealth, 0, stats.MaxHealth);
 

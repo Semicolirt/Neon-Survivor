@@ -1,11 +1,11 @@
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyStats))]
+[RequireComponent(typeof(EnemyController))]
 [RequireComponent(typeof(EnemyMovement))]
 public class EnemyBrain : MonoBehaviour
 {
     private Transform playerTransform;
-    private EnemyStats enemyStats;
+    private EnemyController enemyController;
     private EnemyMovement enemyMovement;
 
     private float moveSpeed;
@@ -19,16 +19,16 @@ public class EnemyBrain : MonoBehaviour
 
     private void Awake()
     {
-        enemyStats = GetComponent<EnemyStats>();
+        enemyController = GetComponent<EnemyController>();
         enemyMovement = GetComponent<EnemyMovement>();
         healthComponent = GetComponent<HealthComponent>();
     }
 
     private void OnEnable()
     {
-        if (enemyStats != null && enemyStats.enemyStats != null)
+        if (enemyController != null && enemyController.enemyStats != null)
         {
-            moveSpeed = enemyStats.enemyStats.moveSpeed;
+            moveSpeed = enemyController.enemyStats.moveSpeed;
         }
 
         if (playerTransform == null)

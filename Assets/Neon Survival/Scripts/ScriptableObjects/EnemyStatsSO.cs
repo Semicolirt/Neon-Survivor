@@ -14,7 +14,7 @@ public class EnemyStatsSO : ScriptableObject, IStats
     public float experience;
 
     public float MaxHealth => maxHealth;
-    public float Defense => armor;
-    public float Attack => damage;
+    public float Armor => armor;
+    public float Damage => damage;
     public float MoveSpeed => moveSpeed;
 }

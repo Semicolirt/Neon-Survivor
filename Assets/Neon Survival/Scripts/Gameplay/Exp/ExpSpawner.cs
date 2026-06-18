@@ -49,7 +49,7 @@ public class ExpSpawner : MonoBehaviour
                 expOrb.OnSpawn(spawnPosition); // Kích hoạt hiệu ứng nảy khi spawn
             }
 
-            float expValue = targetEnemy.GetComponent<EnemyStats>().experience; // Lấy giá trị EXP từ Enemy
+            float expValue = targetEnemy.GetComponent<EnemyController>().experience; // Lấy giá trị EXP từ Enemy
             expOrb.SetExperience(expValue); // Truyền giá trị EXP từ Enemy sang ExpOrb
         }
     }

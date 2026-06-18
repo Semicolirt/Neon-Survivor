@@ -11,6 +11,7 @@ public class LevelUpUIManager : MonoBehaviour
 
     [Header("Player Stats")]
     [SerializeField] private PlayerStatsSO playerStats;
+    [SerializeField] private BulletDataSO bulletData;
 
     private LevelUpManager levelUpManager;
     [SerializeField] private List<SkillDataSO> skillDataList = new List<SkillDataSO>();
@@ -23,7 +24,7 @@ public class LevelUpUIManager : MonoBehaviour
         this.levelUpManager = levelUpManager;
     }
 
-    public void ShowLevelUpUI(/*List<SkillDataSO> skillOptions*/)
+    public void ShowLevelUpUI()
     {
         if (skillDataList.Count == 0)
         {
@@ -81,6 +82,9 @@ public class LevelUpUIManager : MonoBehaviour
     {
         if (playerStats == null || skill == null) return;
         playerStats.damageMultiplier += skill.damageMultiplier;
+        playerStats.moveSpeed += skill.speedPlus;
+        bulletData.lifetime += skill.rangePlus;
+        playerStats.maxHealth += skill.maxHealthPlus;
         Debug.Log($"Applied skill {skill.skillName}. New damage multiplier: {playerStats.damageMultiplier}");
     }
 

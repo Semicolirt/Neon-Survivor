@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyStats : MonoBehaviour, IObserver<HealthData>
+public class EnemyController : MonoBehaviour, IObserver<HealthData>
 {
     [Header("Enemy Data")]
     public EnemyStatsSO enemyStats;

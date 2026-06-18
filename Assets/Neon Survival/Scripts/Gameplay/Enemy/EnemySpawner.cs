@@ -74,14 +74,14 @@ public class EnemySpawner : MonoBehaviour
         if (ObjectPoolManager.Instance != null)
         {
             GameObject spawnedEnemy = ObjectPoolManager.Instance.Spawn(selectedEnemy, spawnPosition, Quaternion.identity);
-            EnemyStats enemyStats = spawnedEnemy.GetComponent<EnemyStats>();
-            if (enemyStats != null)
+            EnemyController enemyController = spawnedEnemy.GetComponent<EnemyController>();
+            if (enemyController != null)
             {
-                enemyStats.OnSpawn(selectedEnemy);
+                enemyController.OnSpawn(selectedEnemy);
             }
             else
             {
-                Debug.LogWarning($"Prefab {selectedEnemy.name} không có component EnemyStats. Vui lòng thêm để hỗ trợ Object Pooling.");
+                Debug.LogWarning($"Prefab {selectedEnemy.name} không có component EnemyController. Vui lòng thêm để hỗ trợ Object Pooling.");
             }
         }
         else
@@ -101,10 +101,10 @@ public class EnemySpawner : MonoBehaviour
         if (ObjectPoolManager.Instance != null)
         {
             GameObject spawnedEnemy = ObjectPoolManager.Instance.Spawn(enemyPrefab, spawnPosition, Quaternion.identity);
-            EnemyStats enemyStats = spawnedEnemy.GetComponent<EnemyStats>();
-            if (enemyStats != null)
+            EnemyController enemyController = spawnedEnemy.GetComponent<EnemyController>();
+            if (enemyController != null)
             {
-                enemyStats.OnSpawn(enemyPrefab);
+                enemyController.OnSpawn(enemyPrefab);
             }
         }
         else

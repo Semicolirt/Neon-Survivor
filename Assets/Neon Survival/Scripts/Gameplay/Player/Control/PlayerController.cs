@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Shooting))]
+[RequireComponent(typeof(HealthComponent))]
 public class PlayerController : MonoBehaviour, IObserver<HealthData>
 {
     public PlayerStatsSO playerStats;
     private Vector2 movementInput;
     private Rigidbody2D rb;
-    private float moveSpeed;
     private Transform spriteTransform;
     private Animator animator;
     private HealthComponent healthComponent;
@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        moveSpeed = playerStats.moveSpeed;
         spriteTransform = transform;
         animator = GetComponent<Animator>();
         // Khởi tạo HealthComponent và đăng ký observer
@@ -39,7 +38,7 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
     void FixedUpdate()
     {
         // Di chuyển player bằng vật lý (velocity)
-        rb.linearVelocity = movementInput * moveSpeed;
+        rb.linearVelocity = movementInput * playerStats.moveSpeed;
 
         PlayerUtility.FlipPlayerTowardMouse(spriteTransform);
 
@@ -74,10 +73,10 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
         }
     }
 
-    void OnDrawGizmosSelected()
+    void ResetStats()
     {
-        // Vẽ bán kính hút ExpOrb trong Scene view để dễ dàng điều chỉnh
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, magenetRadius);
+        playerStats.maxHealth = 100f;
+
     }
+
 }

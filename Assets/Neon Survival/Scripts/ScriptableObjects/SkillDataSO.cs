@@ -8,5 +8,9 @@ public class SkillDataSO : ScriptableObject
     public Sprite icon;
     public float cooldown;
     public float effectDuration;
-    public float damageMultiplier;
+    public float damageMultiplier = 1f;
+    public float speedPlus = 1f;
+    public float rangePlus = 1f;
+    public float areaOfEffectRadius = 1f;
+    public float maxHealthPlus = 1f;
 }

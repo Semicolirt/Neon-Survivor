@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2448138546dcf7e44823cee899c1e9a8, type: 3}
   m_Name: Skill_1
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
-  skillName: Skill 1
-  description: Skill 1 Description
-  icon: {fileID: 21300000, guid: 490cf4ff636f2024b89863e434474ab8, type: 3}
-  cooldown: 3
-  effectDuration: 15
-  damageMultiplier: 2
+  skillName: "T\u1ED1c h\xE0nh"
+  description: "T\u0103ng t\u1ED1c \u0111\u1ED9 di chuy\u1EC3n th\xEAm 5"
+  icon: {fileID: 21300000, guid: 8c56241a9e7fb5246a867ca422ff61e0, type: 3}
+  cooldown: 0
+  effectDuration: 0
+  damageMultiplier: 0
+  speedPlus: 5
+  rangePlus: 0
+  areaOfEffectRadius: 0
+  maxHealthPlus: 0
