@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2448138546dcf7e44823cee899c1e9a8, type: 3}
-  m_Name: Skill_2
+  m_Name: "M\u1EAFt \u01B0ng"
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
-  skillName: "Cu\u1ED3ng n\u1ED9"
-  description: "T\u0103ng th\xEAm s\xE1t th\u01B0\u01A1ng vi\xEAn \u0111\u1EA1n g\u1EA5p
-    \u0111\xF4i"
-  icon: {fileID: 21300000, guid: de3db5ad440e0fa49a494a264323f01e, type: 3}
+  skillName: "M\u1EAFt \u01B0ng"
+  description: "T\u0103ng t\u1EA7m b\u1EAFn th\xEAm 1"
+  icon: {fileID: 21300000, guid: ec2c6f3560b64bd4cb4414e7f1497a1f, type: 3}
   cooldown: 0
   effectDuration: 0
-  damageMultiplier: 2
+  damageMultiplier: 0
   speedPlus: 0
-  rangePlus: 0
+  rangePlus: 0.1
   areaOfEffectRadius: 0
   maxHealthPlus: 0
