@@ -16,6 +16,6 @@ MonoBehaviour:
   moveSpeed: 5
   damageMultiplier: 3
   armor: 0
-  level: 10
-  currentExperience: 433
-  experienceToNextLevel: 518
+  level: 8
+  currentExperience: 133
+  experienceToNextLevel: 360

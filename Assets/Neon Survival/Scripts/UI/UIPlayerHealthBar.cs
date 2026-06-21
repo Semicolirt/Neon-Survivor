@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIHealthBar : MonoBehaviour, IObserver<HealthData>
+public class UIPlayerHealthBar : MonoBehaviour, IObserver<HealthData>
 {
 
     [SerializeField] private HealthComponent playerHealthComponent;

@@ -14,7 +14,21 @@ public class LevelUpState : IGameState
     public IEnumerator Enter()
     {
         Debug.Log("Entering LevelUpState...");
-        levelUpUIManager.ShowLevelUpUI();
+        
+        if (levelUpUIManager == null)
+        {
+            levelUpUIManager = Object.FindObjectOfType<LevelUpUIManager>();
+        }
+
+        if (levelUpUIManager != null)
+        {
+            levelUpUIManager.ShowLevelUpUI();
+        }
+        else
+        {
+            Debug.LogError("LevelUpUIManager không tìm thấy trong Scene!");
+        }
+
         yield break;
     }
 
