@@ -55,7 +55,9 @@ public class Bullet : MonoBehaviour
             {
                 enemyController.OnSelfHit(); // Gọi hiệu ứng hit trên EnemyController (nếu có)
             }
+            
             HealthComponent enemyHealth = hitResults[i].GetComponent<HealthComponent>();
+        
             if (enemyHealth != null)
             {
                 float finalDamage = bulletData.damage * (1f + (playerStats != null ? playerStats.damageMultiplier : 0f)); // Có thể thêm logic tính toán damage dựa trên các yếu tố khác

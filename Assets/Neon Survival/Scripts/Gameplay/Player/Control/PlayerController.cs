@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
         //UIManager.Instance.UpdateHealthBar(data.CurrentHealth, data.MaxHealth);
         if (data.IsDead)
         {
-            //animator.SetTrigger("Die");
+            animator.SetTrigger("Dead");
             PlayerUtility.HandlePlayerDeath(animator, rb);
             this.enabled = false; // Vô hiệu hóa controller
         }

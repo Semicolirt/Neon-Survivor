@@ -18,7 +18,6 @@ public class PlayerUtility
 
     public static void HandlePlayerDeath(Animator animator, Rigidbody2D rb)
     {
-        //animator.SetTrigger("Die");
         rb.linearVelocity = Vector2.zero; // Dừng chuyển động khi chết
         Debug.Log("Player has died. Implement death handling logic here.");
         

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour, IObserver<HealthData>
@@ -10,6 +11,7 @@ public class EnemyController : MonoBehaviour, IObserver<HealthData>
     private GameObject originalPrefab;
     private HealthComponent healthComponent;
     private Animator animator;
+    private Collider2D enemyCollider;
     // Dùng Awake để nạp dữ liệu từ ScriptableObject
     void Awake()
     {
@@ -19,11 +21,14 @@ public class EnemyController : MonoBehaviour, IObserver<HealthData>
         }
         healthComponent = GetComponent<HealthComponent>();
         animator = GetComponent<Animator>();
+        enemyCollider = GetComponent<Collider2D>();
     }
 
     // Gọi khi EnemySpawner spawn enemy này, set lai máu đầy và lưu prefab gốc để sau này Despawn đúng pool 
     public void OnSpawn(GameObject prefab)
     {
+        animator.SetBool("Dead", false); // Reset trạng thái chết khi spawn lại
+        enemyCollider.enabled = true; // Kích hoạt collider khi spawn lại
         if (healthComponent != null)
         {
             healthComponent.AddObserver(this);
@@ -49,6 +54,13 @@ public class EnemyController : MonoBehaviour, IObserver<HealthData>
             expSpawner.DropExp(gameObject); //Truyền gameObject này để spawn EXP xung quanh vị trí của nó
         }
 
+        StartCoroutine(DespawnAfterDeathAnimation());
+    }
+
+    IEnumerator DespawnAfterDeathAnimation()
+    {
+        // Chờ cho đến khi animation "Dead" kết thúc
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         GameObject prefabToDespawn = originalPrefab;
         if (originalPrefab != null)
         {
@@ -68,6 +80,8 @@ public class EnemyController : MonoBehaviour, IObserver<HealthData>
     {
         if (data.IsDead)
         {
+            enemyCollider.enabled = false; // Vô hiệu hóa collider để tránh va chạm sau khi chết
+            animator.SetBool("Dead", true);
             Die();
         }
     }
