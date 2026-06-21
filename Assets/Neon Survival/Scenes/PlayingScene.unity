@@ -6113,7 +6113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1732264943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa22d2fcdd6c334a899ebe53cdf7440, type: 3}
+  m_Script: {fileID: 11500000, guid: 8753fbabcd1eef34cbce0d5a01d701ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIHealthBar
   playerHealthComponent: {fileID: 745427439}
