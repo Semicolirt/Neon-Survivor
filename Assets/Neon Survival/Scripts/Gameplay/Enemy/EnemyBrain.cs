@@ -2,6 +2,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(EnemyController))]
 [RequireComponent(typeof(EnemyMovement))]
+[RequireComponent(typeof(HealthComponent))]
+[RequireComponent(typeof(EnemyAttack))]
 public class EnemyBrain : MonoBehaviour
 {
     private Transform playerTransform;
