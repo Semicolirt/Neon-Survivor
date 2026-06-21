@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
     private Vector2 movementInput;
     private Rigidbody2D rb;
     private Transform spriteTransform;
+    private SpriteRenderer spriteRenderer;
     private Animator animator;
     private HealthComponent healthComponent;
     private float magenetRadius = 2f; // Bán kính hút ExpOrb
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
         rb = GetComponent<Rigidbody2D>();
         spriteTransform = transform;
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         // Khởi tạo HealthComponent và đăng ký observer
         healthComponent = GetComponent<HealthComponent>();
         healthComponent.AddObserver(this);
@@ -77,6 +79,13 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
     {
         playerStats.maxHealth = 100f;
 
+    }
+
+    public void OnSelfHit()
+    {
+        animator.SetTrigger("Hit");
+        spriteRenderer.color = Color.red;
+        spriteRenderer.color = Color.white; // Reset màu sắc sau khi bị hit
     }
 
 }
