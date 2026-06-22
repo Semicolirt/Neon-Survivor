@@ -110,10 +110,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   bulletData: {fileID: 11400000, guid: c8e87a063b0eb784cacc81bed8be8bfb, type: 2}
-  animator:
-  - {fileID: -6656072474397380014, guid: 5f1d2391065fe5548ba7fb9682f56daa, type: 3}
-  - {fileID: -6656072474397380014, guid: 5f1d2391065fe5548ba7fb9682f56daa, type: 3}
   originalPrefab: {fileID: 0}
+  playerStats: {fileID: 11400000, guid: d3ded9d32f0fef742b407622c41f63a6, type: 2}
 --- !u!50 &645680235699655628
 Rigidbody2D:
   serializedVersion: 5

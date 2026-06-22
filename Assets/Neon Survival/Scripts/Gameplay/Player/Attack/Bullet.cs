@@ -58,10 +58,14 @@ public class Bullet : MonoBehaviour
             
             HealthComponent enemyHealth = hitResults[i].GetComponent<HealthComponent>();
         
-            if (enemyHealth != null)
+            if (enemyHealth != null && bulletData != null && playerStats != null)
             {
-                float finalDamage = bulletData.damage * (1f + (playerStats != null ? playerStats.damageMultiplier : 0f)); // Có thể thêm logic tính toán damage dựa trên các yếu tố khác
+                float finalDamage = bulletData.damage * playerStats.damageMultiplier; // Có thể thêm logic tính toán damage dựa trên các yếu tố khác
                 enemyHealth.TakeDamage(finalDamage);
+            }
+            else
+            {
+                Debug.LogWarning("Bullet đã va chạm nhưng không tìm thấy EnemyController hoặc HealthComponent trên đối tượng: " + hitResults[i].name);
             }
             DeSpawnBullet(); // Despawn viên đạn sau khi va chạm
         }

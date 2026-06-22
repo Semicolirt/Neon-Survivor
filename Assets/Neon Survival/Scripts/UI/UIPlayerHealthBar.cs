@@ -25,7 +25,6 @@ public class UIPlayerHealthBar : MonoBehaviour, IObserver<HealthData>
         }
     }
 
-
     public void OnNotify(HealthData data)
     {
         if (healthBarFill != null)
@@ -40,6 +39,4 @@ public class UIPlayerHealthBar : MonoBehaviour, IObserver<HealthData>
             Debug.Log("Cập nhật UI: Player đã chết!");
         }
     }
-
 }
-//force
