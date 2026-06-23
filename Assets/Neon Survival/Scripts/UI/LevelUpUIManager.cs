@@ -13,6 +13,7 @@ public class LevelUpUIManager : MonoBehaviour
     [SerializeField] private PlayerStatsSO playerStats;
     [SerializeField] private BulletDataSO bulletData;
 
+    [Header("Level Up Settings")]
     private LevelUpManager levelUpManager;
     [SerializeField] private List<SkillDataSO> skillDataList = new List<SkillDataSO>();
     [SerializeField] private GameObject[] levelUpCards;
@@ -70,8 +71,8 @@ public class LevelUpUIManager : MonoBehaviour
     {
         ApplySkillToPlayerStats(selectedSkill);
         levelUpPanel.SetActive(false);
-        Time.timeScale = 1f; // Resume the game
-        ReturnCardsToPool(); // Trả các card về pool sau khi chọn
+        Time.timeScale = 1f;
+        ReturnCardsToPool();
         if (GameManager.Instance != null && GameManager.Instance.playingState != null)
         {
             GameManager.Instance.StartChangeState(GameManager.Instance.playingState);
@@ -85,7 +86,6 @@ public class LevelUpUIManager : MonoBehaviour
         playerStats.moveSpeed += skill.speedPlus;
         bulletData.lifetime += skill.rangePlus;
         playerStats.maxHealth += skill.maxHealthPlus;
-        Debug.Log($"Applied skill {skill.skillName}. New damage multiplier: {playerStats.damageMultiplier}");
     }
 
     void ReturnCardsToPool()

@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 642139922}
   - component: {fileID: 642139923}
   m_Layer: 0
-  m_Name: ExpSpawner
+  m_Name: Exp Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6033,7 +6033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -822, y: 173}
+  m_AnchoredPosition: {x: -835, y: 253}
   m_SizeDelta: {x: 138.9, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1709603645
@@ -6051,7 +6051,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 30, y: 0, z: 0, w: 15}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6239,7 +6239,7 @@ GameObject:
   - component: {fileID: 1761897747}
   - component: {fileID: 1761897749}
   m_Layer: 0
-  m_Name: LevelManager
+  m_Name: Level Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

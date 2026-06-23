@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6481448270965642962}
   - component: {fileID: 4211458540867942468}
   m_Layer: 0
-  m_Name: Exp 2
+  m_Name: ExpOrb
   m_TagString: ExpOrb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

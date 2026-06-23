@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e5a447b018e885418377b75d12690ed, type: 3}
-  m_Name: PlayerStats
+  m_Name: Player_Stats
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsSO
   maxHealth: 100
   moveSpeed: 5

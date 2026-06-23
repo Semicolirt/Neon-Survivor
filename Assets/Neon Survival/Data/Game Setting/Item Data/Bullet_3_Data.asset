@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a6f039dbde45d489617c7a6edd981f, type: 3}
-  m_Name: Small Exp
-  m_EditorClassIdentifier: Assembly-CSharp::ExperienceSO
-  expName: Small Exp
-  expValue: 10
+  m_Script: {fileID: 11500000, guid: 0a4c5112be809da4aa7e0c1ea4469ed9, type: 3}
+  m_Name: Bullet_3_Data
+  m_EditorClassIdentifier: Assembly-CSharp::BulletDataSO
+  bulletName: Default Bullet
+  speed: 20
+  hitRadius: 0.5
+  damage: 10
+  lifetime: 0.3

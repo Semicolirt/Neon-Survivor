@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0a6f039dbde45d489617c7a6edd981f, type: 3}
-  m_Name: Medium Exp
+  m_Name: Small_Exp
   m_EditorClassIdentifier: Assembly-CSharp::ExperienceSO
-  expName: 2
-  expValue: 20
+  expName: Small Exp
+  expValue: 10
