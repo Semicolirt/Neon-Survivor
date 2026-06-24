@@ -47,6 +47,11 @@ public class EnemyController : MonoBehaviour, IObserver<HealthData>
     // Hàm xử lý cái chết (Chết giả)
     private void Die()
     {
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.AddScore(10);
+        }
+
         // TODO: Xử lý rớt kinh nghiệm (EXP), rớt đồ, sinh ra Fx máu... tại đây
         ExpSpawner expSpawner = FindAnyObjectByType<ExpSpawner>();
         if (expSpawner != null)

@@ -53,6 +53,12 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
         //UIManager.Instance.UpdateHealthBar(data.CurrentHealth, data.MaxHealth);
         if (data.IsDead)
         {
+            if (ScoreManager.Instance != null && DataManager.Instance != null)
+            {
+                ScoreManager.Instance.ConvertScoreToGold();
+                _ = DataManager.Instance.SaveDataAsync(); // fire-and-forget
+            }
+            
             animator.SetTrigger("Dead");
             PlayerUtility.HandlePlayerDeath(animator, rb);
             this.enabled = false; // Vô hiệu hóa controller

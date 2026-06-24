@@ -40,7 +40,6 @@ public class LevelUpState : IGameState
 
     public void Update()
     {
-        Debug.Log("Updating LevelUpState...");
         
     }
 }
