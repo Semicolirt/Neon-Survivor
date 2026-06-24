@@ -93,7 +93,6 @@ public class WaveManager : MonoBehaviour
                 }
             }
 
-
             if (spawnData.spawnRate > 0)
             {
                 yield return new WaitForSeconds(spawnData.spawnRate);

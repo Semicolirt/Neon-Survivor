@@ -27,9 +27,9 @@ public class ScoreManager : MonoBehaviour
         SetScoreText();
     }
 
-    public void ConvertScoreToGold()
+    public int ConvertScoreToGold()
     {
-        if (DataManager.Instance == null) return;
+        if (DataManager.Instance == null) return 0;
 
         // 10 score = 1 gold
         int goldEarned = CurrentScore / 10;
@@ -44,6 +44,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         Debug.Log($"Game Over! Score: {CurrentScore}, Gold Earned: {goldEarned}, Total Gold: {DataManager.Instance.GameData.gold}");
+        return goldEarned;
     }
 
     private void SetScoreText()

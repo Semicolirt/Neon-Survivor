@@ -21,7 +21,6 @@ public class PlayingState : IGameState
     private WaveManager waveManager;
     private LevelDataSO currentLevelData;
     private AsyncOperationHandle<LevelDataSO> levelDataHandle;
-
     public IEnumerator Enter()
     {
         if (manager.PreviousState == manager.levelUpState)
@@ -79,6 +78,14 @@ public class PlayingState : IGameState
         else
         {
             Debug.Log("Hoàn thành tất cả các Waves! Trận đấu kết thúc.");
+            if (UIVictoryManager.Instance != null)
+            {
+                UIVictoryManager.Instance.ShowVictoryUI();
+            }
+            else
+            {
+                Debug.LogWarning("Không tìm thấy UIVictoryManager trong Scene Gameplay!");
+            }
         }
     }
 

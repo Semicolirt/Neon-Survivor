@@ -15,9 +15,14 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private HealthComponent healthComponent;
+    [SerializeField] private GameObject weapon;
+    [SerializeField] private Canvas deadCanvas; // Canvas hiển thị khi player chết
+    private Canvas playerCanvas; // Canvas của player để hiển thị UI như health bar, exp bar, v.v.
     private float magenetRadius = 2f; // Bán kính hút ExpOrb
     void Awake()
     {
+        weapon = GameObject.Find("Weapon Pivot");
+        playerCanvas = GameObject.Find("Dynamic Canvas").GetComponent<Canvas>();
         rb = GetComponent<Rigidbody2D>();
         spriteTransform = transform;
         animator = GetComponent<Animator>();
@@ -59,8 +64,7 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
                 _ = DataManager.Instance.SaveDataAsync(); // fire-and-forget
             }
             
-            animator.SetTrigger("Dead");
-            PlayerUtility.HandlePlayerDeath(animator, rb);
+            PlayerUtility.HandlePlayerDeath(animator, rb, weapon, deadCanvas, playerCanvas);
             this.enabled = false; // Vô hiệu hóa controller
         }
     }

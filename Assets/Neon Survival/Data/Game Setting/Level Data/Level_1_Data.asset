@@ -15,5 +15,5 @@ MonoBehaviour:
   levelName: Level 1
   waves:
   - {fileID: 11400000, guid: 973a09df2caa5e6489b6296eaba7270c, type: 2}
-  - {fileID: 11400000, guid: e36246d546197ba45a897e7eefb6cb50, type: 2}
   delayBetweenWaves: 5
+  difficultyMultiplier: 1
