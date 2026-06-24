@@ -13,4 +13,7 @@ public class LevelDataSO : ScriptableObject
     
     [Tooltip("Thời gian nghỉ giữa các Wave (giây)")]
     public float delayBetweenWaves = 5f;
+
+    [Tooltip("Hệ số độ khó của Level")]
+    public float difficultyMultiplier = 1f;
 }

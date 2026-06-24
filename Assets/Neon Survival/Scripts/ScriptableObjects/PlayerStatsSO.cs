@@ -18,4 +18,13 @@ public class PlayerStatsSO : ScriptableObject, IStats
     public float Armor => armor;
     public float Damage => damageMultiplier;
     public float MoveSpeed => moveSpeed;
+
+    //Reset stats to default values when the ScriptableObject is enabled
+    void OnEnable()
+    {
+        maxHealth = 100f;
+        moveSpeed = 5f;
+        damageMultiplier = 1f;
+        armor = 0f;
+    }
 }

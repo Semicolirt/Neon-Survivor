@@ -10,8 +10,15 @@ public class LevelUpManager : MonoBehaviour
 
     [Header("Run-time Level Data")]
     [SerializeField] private float currentExp;
+    public float CurrentExp => currentExp;
+    
     [SerializeField] private float expToNextLevel;
+    public float ExpToNextLevel => expToNextLevel;
+    
     [SerializeField] private int currentLevel;
+    public int CurrentLevel => currentLevel;
+
+    public event Action<float, float> OnExperienceChanged;
 
     private void Initialize()
     {
@@ -33,19 +40,9 @@ public class LevelUpManager : MonoBehaviour
         {
             levelUpUIManager.Init(this);
         }
-    }
-
-    void Start()
-    {
         currentLevel = playerStats.level;
         currentExp = playerStats.currentExperience;
         expToNextLevel = playerStats.experienceToNextLevel;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void AddExperience(float amount)
@@ -53,6 +50,7 @@ public class LevelUpManager : MonoBehaviour
         currentExp += amount;
         playerStats.currentExperience = (int)currentExp;
         CheckLevelUp();
+        OnExperienceChanged?.Invoke(currentExp, expToNextLevel);
     }
 
     private void CheckLevelUp()
@@ -65,7 +63,6 @@ public class LevelUpManager : MonoBehaviour
             // Tăng yêu cầu EXP cho level tiếp theo (ví dụ: tăng 20% mỗi level)
             expToNextLevel = Mathf.RoundToInt(expToNextLevel * 1.2f);
             playerStats.experienceToNextLevel = (int)expToNextLevel;
-            Debug.Log($"Level Up! New Level: {currentLevel}, EXP to Next Level: {expToNextLevel}");
             if (GameManager.Instance != null && GameManager.Instance.levelUpState != null)
             {
                 GameManager.Instance.StartChangeState(GameManager.Instance.levelUpState);
