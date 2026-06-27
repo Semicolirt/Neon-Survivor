@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Small_Exp
   m_EditorClassIdentifier: Assembly-CSharp::ExperienceSO
   expName: Small Exp
-  expValue: 10
+  expValue: 1

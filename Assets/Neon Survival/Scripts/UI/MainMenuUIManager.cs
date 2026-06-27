@@ -22,8 +22,17 @@ public class MainMenuUIManager : MonoBehaviour
         gameManager = GameManager.Instance;
         
         // Trạng thái hiển thị ban đầu
-        if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
-        if (levelSelectionPanel != null) levelSelectionPanel.SetActive(false);
+        if (gameManager != null && gameManager.returnToLevelSelection)
+        {
+            if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
+            if (levelSelectionPanel != null) levelSelectionPanel.SetActive(true);
+            gameManager.returnToLevelSelection = false;
+        }
+        else
+        {
+            if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
+            if (levelSelectionPanel != null) levelSelectionPanel.SetActive(false);
+        }
 
         // Đăng ký sự kiện
         if (playButton != null) playButton.onClick.AddListener(ShowLevelSelection);
@@ -76,7 +85,7 @@ public class MainMenuUIManager : MonoBehaviour
         }
     }
 
-    private void ShowLevelSelection()
+    public void ShowLevelSelection()
     {
         if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
         if (levelSelectionPanel != null) levelSelectionPanel.SetActive(true);

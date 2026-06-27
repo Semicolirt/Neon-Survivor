@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour, IObserver<HealthData>
     private HealthComponent healthComponent;
     private Animator animator;
     private Collider2D enemyCollider;
+    private bool isSpawned = false;
     // Dùng Awake để nạp dữ liệu từ ScriptableObject
     void Awake()
     {
@@ -27,6 +28,7 @@ public class EnemyController : MonoBehaviour, IObserver<HealthData>
     // Gọi khi EnemySpawner spawn enemy này, set lai máu đầy và lưu prefab gốc để sau này Despawn đúng pool 
     public void OnSpawn(GameObject prefab)
     {
+        isSpawned = true;
         animator.SetBool("Dead", false); // Reset trạng thái chết khi spawn lại
         enemyCollider.enabled = true; // Kích hoạt collider khi spawn lại
         if (healthComponent != null)
@@ -34,6 +36,11 @@ public class EnemyController : MonoBehaviour, IObserver<HealthData>
             healthComponent.AddObserver(this);
         }
         originalPrefab = prefab; // Lưu lại prefab gốc khi spawn
+
+        if (WaveManager.Instance != null)
+        {
+            WaveManager.Instance.EnemySpawned();
+        }
     }
 
     void OnDisable()
@@ -41,6 +48,29 @@ public class EnemyController : MonoBehaviour, IObserver<HealthData>
         if (healthComponent != null)
         {
             healthComponent.RemoveObserver(this); // Hủy đăng ký observer khi enemy bị vô hiệu hóa
+        }
+
+        if (isSpawned)
+        {
+            isSpawned = false;
+            if (WaveManager.Instance != null)
+            {
+                WaveManager.Instance.EnemyDied();
+            }
+        }
+    }
+
+    // Gọi bởi WaveManager khi kết thúc Wave để force-despawn quái mà không tính vào activeEnemyCount
+    public void ForceDeactivate()
+    {
+        isSpawned = false; // Tắt flag trước để OnDisable không gọi EnemyDied()
+        if (originalPrefab != null && ObjectPoolManager.Instance != null)
+        {
+            ObjectPoolManager.Instance.Despawn(originalPrefab, gameObject);
+        }
+        else
+        {
+            gameObject.SetActive(false);
         }
     }
 

@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
   enemySpawner: {fileID: 188789533}
+  activeEnemyCount: 0
 --- !u!4 &24399901
 Transform:
   m_ObjectHideFlags: 0
@@ -360,7 +361,7 @@ MonoBehaviour:
   - {fileID: 8793425273908105973, guid: 5f1d2391065fe5548ba7fb9682f56daa, type: 3}
   playerTransform: {fileID: 745427432}
   spawnInterval: 1
-  spawnRadius: 15
+  spawnRadius: 10
   initialPoolSize: 30
   autoSpawn: 0
 --- !u!4 &188789534

@@ -5,11 +5,28 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    public static WaveManager Instance { get; private set; }
+
     [Header("Dependencies")]
     [Tooltip("Tham chiếu tới EnemySpawner để mượn logic spawn vị trí")]
     public EnemySpawner enemySpawner;
 
     public event Action OnWaveCompleted;
+
+    [HideInInspector]
+    public int activeEnemyCount = 0;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -17,6 +34,16 @@ public class WaveManager : MonoBehaviour
         {
             enemySpawner = FindAnyObjectByType<EnemySpawner>();
         }
+    }
+
+    public void EnemySpawned()
+    {
+        activeEnemyCount++;
+    }
+
+    public void EnemyDied()
+    {
+        activeEnemyCount--;
     }
 
     public void PlayWave(WaveDataSO waveData)
@@ -38,47 +65,71 @@ public class WaveManager : MonoBehaviour
             }
         }
 
-        // Danh sách để lưu các Coroutine đang chạy cho từng nhóm quái trong Wave này
-        List<Coroutine> spawnCoroutines = new List<Coroutine>();
+        // Theo dõi số lượng nhóm quái đã spawn xong
+        int completedSpawns = 0;
+        int totalSpawns = waveData.enemySpawns.Count;
 
         // Chạy coroutine cho từng group quái trong đợt này
         foreach (var spawnData in waveData.enemySpawns)
         {
-            spawnCoroutines.Add(StartCoroutine(SpawnEnemyGroup(spawnData)));
+            StartCoroutine(SpawnEnemyGroup(spawnData, () => completedSpawns++));
         }
 
-        // Đợi cho đến khi hết thời gian của Wave
-        if (waveData.waveDuration > 0)
+        float timer = waveData.waveDuration;
+
+        if (waveData.isBossWave)
         {
-            yield return new WaitForSeconds(waveData.waveDuration);
+            // Boss Wave: Chờ spawn xong toàn bộ và bắt buộc tiêu diệt hết quái
+            yield return new WaitUntil(() => completedSpawns >= totalSpawns);
+            yield return new WaitUntil(() => activeEnemyCount <= 0);
         }
         else
         {
-            // Nếu waveDuration <= 0, chờ đến khi quá trình spawn hoàn tất
-            foreach (var coroutine in spawnCoroutines)
+            // Normal Wave:
+            if (timer > 0)
             {
-                yield return coroutine;
+                while (timer > 0)
+                {
+                    timer -= Time.deltaTime;
+                    // Nếu đã spawn xong và không còn quái nào sống -> kết thúc sớm
+                    if (completedSpawns >= totalSpawns && activeEnemyCount <= 0)
+                    {
+                        break;
+                    }
+                    yield return null;
+                }
+            }
+            else
+            {
+                // Nếu không có thời gian giới hạn, chờ spawn xong và tiêu diệt hết quái
+                yield return new WaitUntil(() => completedSpawns >= totalSpawns);
+                yield return new WaitUntil(() => activeEnemyCount <= 0);
             }
         }
 
-        // Dọn dẹp: Hủy hoàn toàn Pool của các quái trong Wave này để giải phóng RAM
-        if (ObjectPoolManager.Instance != null)
+        // Dọn dẹp: Force-despawn tất cả quái còn sống mà KHÔNG tính vào activeEnemyCount
+        EnemyController[] aliveEnemies = UnityEngine.Object.FindObjectsByType<EnemyController>(
+            UnityEngine.FindObjectsSortMode.None);
+        foreach (var enemy in aliveEnemies)
         {
-            foreach (var spawnData in waveData.enemySpawns)
+            if (enemy.gameObject.activeSelf)
             {
-                if (spawnData.enemyPrefab != null)
-                {
-                    ObjectPoolManager.Instance.DestroyPool(spawnData.enemyPrefab);
-                }
+                enemy.ForceDeactivate();
             }
         }
+
+        // Reset về 0 để đảm bảo Wave tiếp theo bắt đầu với count sạch
+        activeEnemyCount = 0;
+
+        // Đợi 1 frame để mọi OnDisable xử lý xong trước khi chuyển Wave
+        yield return null;
 
         // Báo cho PlayingState biết Wave đã kết thúc
         OnWaveCompleted?.Invoke();
     }
 
     // Coroutine để spawn một nhóm quái cụ thể theo thông tin trong WaveSpawnData
-    private IEnumerator SpawnEnemyGroup(WaveSpawnData spawnData)
+    private IEnumerator SpawnEnemyGroup(WaveSpawnData spawnData, Action onComplete)
     {
         for (int i = 0; i < spawnData.count; i++)
         {
@@ -98,5 +149,7 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitForSeconds(spawnData.spawnRate);
             }
         }
+
+        onComplete?.Invoke();
     }
 }

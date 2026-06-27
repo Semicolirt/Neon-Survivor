@@ -72,6 +72,7 @@ public class UIVictoryManager : MonoBehaviour
         Time.timeScale = 1f; // Resume time before changing scene/state
         if (GameManager.Instance != null && GameManager.Instance.mainMenuState != null)
         {
+            GameManager.Instance.returnToLevelSelection = true;
             GameManager.Instance.StartChangeState(GameManager.Instance.mainMenuState);
         }
     }

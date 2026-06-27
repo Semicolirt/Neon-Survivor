@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a6f039dbde45d489617c7a6edd981f, type: 3}
-  m_Name: Medium_Exp
-  m_EditorClassIdentifier: Assembly-CSharp::ExperienceSO
-  expName: 2
-  expValue: 2
+  m_Script: {fileID: 11500000, guid: b10ee90793c22d9498e0a2768e5e418e, type: 3}
+  m_Name: Boss_1_Asset
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
+  enemyName: Undead 2
+  maxHealth: 100
+  moveSpeed: 3
+  damage: 5
+  armor: 5
+  experience: 100

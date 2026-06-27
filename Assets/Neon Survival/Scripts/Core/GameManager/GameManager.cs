@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     [Header("Game Data")]
     [Tooltip("Key Addressable của Level hiện tại (VD: Level_1_Data, Level_2_Data)")]
     public string currentLevelKey = "Level_1_Data";
+    
+    [HideInInspector]
+    public bool returnToLevelSelection = false;
 
     private void Awake()
     {

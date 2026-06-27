@@ -20,6 +20,7 @@ public class WaveDataSO : ScriptableObject
     [Header("Wave Info")]
     public string waveName;
     public float waveDuration; // optional, could be 0 if wave ends when all enemies are dead
+    public bool isBossWave; // Nếu true, hoàn thành wave này sẽ kết thúc màn chơi
 
     [Header("Spawns")]
     [Tooltip("List of enemy groups to spawn during this wave")]

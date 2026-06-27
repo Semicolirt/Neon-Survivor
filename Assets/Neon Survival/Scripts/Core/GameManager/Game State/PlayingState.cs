@@ -70,6 +70,19 @@ public class PlayingState : IGameState
 
     private void HandleWaveCompleted()
     {
+        if (currentLevelData != null && currentWaveIndex < currentLevelData.waves.Count)
+        {
+            if (currentLevelData.waves[currentWaveIndex].isBossWave)
+            {
+                Debug.Log("Hoàn thành Boss Wave! Trận đấu kết thúc.");
+                if (UIVictoryManager.Instance != null)
+                {
+                    UIVictoryManager.Instance.ShowVictoryUI();
+                }
+                return;
+            }
+        }
+
         currentWaveIndex++;
         if (currentLevelData != null && currentWaveIndex < currentLevelData.waves.Count)
         {
