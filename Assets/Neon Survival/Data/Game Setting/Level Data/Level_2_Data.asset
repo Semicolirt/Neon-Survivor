@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelDataSO
   levelName: Level 2
   waves:
-  - {fileID: 11400000, guid: 973a09df2caa5e6489b6296eaba7270c, type: 2}
   - {fileID: 11400000, guid: 99493019232318f4a86230d152a533b3, type: 2}
   delayBetweenWaves: 1
   difficultyMultiplier: 1
