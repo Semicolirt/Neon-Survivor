@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ba69df1dedd2a94ebc8a8ae9ff8aa01, type: 3}
-  m_Name: Wave_3_Data
+  m_Name: Wave_1_Boss_Data
   m_EditorClassIdentifier: Assembly-CSharp::WaveDataSO
   waveName: Wave 1
   waveDuration: 60
