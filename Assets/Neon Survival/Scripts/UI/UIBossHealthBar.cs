@@ -19,6 +19,23 @@ public class UIBossHealthBar : UIHealthBarBase
     [SerializeField] private TMP_Text healthValueText; // Hiển thị "1500 / 3000"
     [SerializeField] private GameObject bossHUDRoot;   // Panel cha để Show/Hide
 
+    [SerializeField] private Vector3 originalScale = new Vector3(1,1,1);
+
+    void Start()
+    {
+        // Nếu bossHealthComponent đã được assign sẵn trên Inspector (World-Space)
+        // thì bind luôn; nếu không thì sẽ được bind động qua BindToBoss()
+        if (bossHealthComponent != null)
+            bossHealthComponent.AddObserver(this);
+
+        ShowHUD(bossHealthComponent != null);
+    }
+
+    void LateUpdate()
+    {
+        transform.localScale = originalScale; // Giữ nguyên scale để tránh bị ảnh hưởng bởi Canvas Scale
+    }
+
     // =========================================================
     //  Public API - Bind động khi Boss xuất hiện
     // =========================================================
