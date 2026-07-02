@@ -12,6 +12,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Transform firePoint;
 
     private float fireTimer = 0f;
+    private float fireRateMultiplier = 1f;
 
     void Awake()
     {
@@ -28,13 +29,18 @@ public class Shooting : MonoBehaviour
         fireAction.Disable();
     }
 
+    public void SetFireRateMultiplier(float multiplier)
+    {
+        fireRateMultiplier = multiplier;
+    }
+
     void Update()
     {
         // Kiểm tra nếu nút bắn được nhấn và đã đủ thời gian giữa các lần bắn
         if (fireAction.IsPressed() && Time.time >= fireTimer)
         {
             Shoot();
-            fireTimer = Time.time + weaponData.fireRate;
+            fireTimer = Time.time + (weaponData.fireRate * fireRateMultiplier);
         }
     }
 

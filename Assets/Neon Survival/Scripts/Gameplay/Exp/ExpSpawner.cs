@@ -33,10 +33,19 @@ public class ExpSpawner : MonoBehaviour
 
     public void DropExp(GameObject targetEnemy)
     {
-        if (expPrefab == null || targetEnemy == null) return;
+        if (targetEnemy == null) return;
+        float expValue = 0f;
+        EnemyController ec = targetEnemy.GetComponent<EnemyController>();
+        if (ec != null)
+        {
+            expValue = ec.experience;
+        }
+        DropExp(targetEnemy.transform.position, expValue);
+    }
 
-        // Tính toán vị trí spawn ngẫu nhiên xung quanh Enemy đã bị tiêu diệt
-        Vector2 spawnPosition = (Vector2)targetEnemy.transform.position;
+    public void DropExp(Vector3 spawnPosition, float expValue)
+    {
+        if (expPrefab == null) return;
 
         // Spawn Exp từ Object Pool
         GameObject exp = ObjectPoolManager.Instance.Spawn(expPrefab, spawnPosition, Quaternion.identity);
@@ -47,10 +56,8 @@ public class ExpSpawner : MonoBehaviour
             ExpOrb expOrb = exp.GetComponent<ExpOrb>();
             if (expOrb != null)            {
                 expOrb.OnSpawn(spawnPosition); // Kích hoạt hiệu ứng nảy khi spawn
+                expOrb.SetExperience(expValue); // Truyền giá trị EXP
             }
-
-            float expValue = targetEnemy.GetComponent<EnemyController>().experience; // Lấy giá trị EXP từ Enemy
-            expOrb.SetExperience(expValue); // Truyền giá trị EXP từ Enemy sang ExpOrb
         }
     }
 

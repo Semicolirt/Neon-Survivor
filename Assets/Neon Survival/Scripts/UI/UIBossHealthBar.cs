@@ -36,13 +36,6 @@ public class UIBossHealthBar : UIHealthBarBase
         transform.localScale = originalScale; // Giữ nguyên scale để tránh bị ảnh hưởng bởi Canvas Scale
     }
 
-    // =========================================================
-    //  Public API - Bind động khi Boss xuất hiện
-    // =========================================================
-
-    /// <summary>
-    /// Gọi từ BossController hoặc BossSpawner sau khi Boss được spawn để bind thanh máu.
-    /// </summary>
     public void BindToBoss(HealthComponent bossHealth, string bossName = "BOSS")
     {
         // Hủy đăng ký observer cũ nếu có
@@ -60,9 +53,6 @@ public class UIBossHealthBar : UIHealthBarBase
         ShowHUD(true);
     }
 
-    /// <summary>
-    /// Gọi khi Boss chết hoặc rời scene để ẩn thanh máu.
-    /// </summary>
     public void UnbindBoss()
     {
         if (bossHealthComponent != null)
@@ -74,20 +64,10 @@ public class UIBossHealthBar : UIHealthBarBase
         ShowHUD(false);
     }
 
-    // =========================================================
-    //  Override - Cung cấp HealthComponent
-    // =========================================================
-
     protected override HealthComponent GetHealthComponent()
     {
-        // Nếu đã assign sẵn trên Inspector (World-Space trên prefab Boss)
-        // thì dùng luôn; nếu không thì sẽ được bind động qua BindToBoss()
         return bossHealthComponent;
     }
-
-    // =========================================================
-    //  Override - Xử lý thêm khi máu thay đổi
-    // =========================================================
 
     protected override void OnHealthChanged(HealthData data)
     {
@@ -101,10 +81,6 @@ public class UIBossHealthBar : UIHealthBarBase
             UnbindBoss();
         }
     }
-
-    // =========================================================
-    //  Internal helpers
-    // =========================================================
 
     private void ShowHUD(bool show)
     {

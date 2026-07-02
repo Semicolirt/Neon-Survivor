@@ -49,4 +49,14 @@ public class HealthComponent : Subject<HealthData>
 
         Notify(new HealthData(currentHealth, stats.MaxHealth, currentHealth <= 0));
     }
+
+    public void Heal(float amount)
+    {
+        if (currentHealth <= 0) return;
+
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, stats.MaxHealth);
+
+        Notify(new HealthData(currentHealth, stats.MaxHealth, false));
+    }
 }

@@ -17,5 +17,5 @@ MonoBehaviour:
   isBossWave: 0
   enemySpawns:
   - enemyPrefab: {fileID: 8793425273908105973, guid: 5f1d2391065fe5548ba7fb9682f56daa, type: 3}
-    count: 500
+    count: 10
     spawnRate: 0.1

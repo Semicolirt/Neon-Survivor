@@ -82,20 +82,27 @@ public class EnemyController : MonoBehaviour, IObserver<HealthData>
             ScoreManager.Instance.AddScore(10);
         }
 
-        // TODO: Xử lý rớt kinh nghiệm (EXP), rớt đồ, sinh ra Fx máu... tại đây
-        ExpSpawner expSpawner = FindAnyObjectByType<ExpSpawner>();
-        if (expSpawner != null)
-        {
-            expSpawner.DropExp(gameObject); //Truyền gameObject này để spawn EXP xung quanh vị trí của nó
-        }
-
-        StartCoroutine(DespawnAfterDeathAnimation());
+        Vector3 deathPosition = transform.position;
+        StartCoroutine(DespawnAfterDeathAnimation(deathPosition, experience));
     }
 
-    IEnumerator DespawnAfterDeathAnimation()
+    IEnumerator DespawnAfterDeathAnimation(Vector3 deathPosition, float expValue)
     {
         // Chờ cho đến khi animation "Dead" kết thúc
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Sinh kinh nghiệm và đồ rơi ngay tại vị trí chết đã lưu trước đó
+        ExpSpawner expSpawner = FindAnyObjectByType<ExpSpawner>();
+        if (expSpawner != null)
+        {
+            expSpawner.DropExp(deathPosition, expValue);
+        }
+
+        if (DropItemSpawner.Instance != null)
+        {
+            DropItemSpawner.Instance.TryDropItem(deathPosition);
+        }
+
         GameObject prefabToDespawn = originalPrefab;
         if (originalPrefab != null)
         {

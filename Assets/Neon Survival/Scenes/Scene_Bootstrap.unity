@@ -152,6 +152,7 @@ MonoBehaviour:
   levelUpUIManager: {fileID: 0}
   levelUpManager: {fileID: 0}
   currentLevelKey: Level_1_Data
+  returnToLevelSelection: 0
 --- !u!4 &438723723
 Transform:
   m_ObjectHideFlags: 0

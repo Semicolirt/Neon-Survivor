@@ -29,7 +29,10 @@ public class ExpOrb : MonoBehaviour
 
     public void OnSpawn(Vector3 spawnPosition)
     {
-        transform.position = spawnPosition;
+        // Randomize spawn position slightly around death location for visual variance
+        Vector3 offset = new Vector3(Random.Range(-0.4f, 0.4f), Random.Range(-0.4f, 0.4f), 0f);
+        transform.position = spawnPosition + offset;
+        
         isMagneting = false;
 
         // Chơi hiệu ứng nảy
@@ -42,19 +45,22 @@ public class ExpOrb : MonoBehaviour
     private void PlayBounceEffect()
     {
         // DOTween Bounce (mượt + linh hoạt)
-        if (visual != null)
+        if (visual != null && visual != transform)
         {
             visual.DOKill(); // Clear tween cũ
             visual.localPosition = Vector3.zero;
 
             Sequence seq = DOTween.Sequence();
             var position = new Vector2(0, bounceHeight);
-            var randomOffset = new Vector2(Random.Range(-1f, 1f), 0);
-            position += randomOffset;
-            var positionDown = new Vector2(position.x, 0);
+            var positionDown = new Vector2(0, 0);
 
             seq.Append(visual.DOLocalMove(position, bounceDuration * 0.5f).SetEase(bounceEaseUp));
             seq.Append(visual.DOLocalMove(positionDown, bounceDuration * 0.5f).SetEase(bounceEaseDown));
+        }
+        else
+        {
+            transform.DOKill();
+            transform.DOJump(transform.position, bounceHeight, 1, bounceDuration);
         }
     }
 

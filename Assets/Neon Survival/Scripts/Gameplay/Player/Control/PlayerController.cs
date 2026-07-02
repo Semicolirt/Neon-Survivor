@@ -82,13 +82,36 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
                     expOrb.StartMagnet(transform); // Bắt đầu hút ExpOrb về phía player
                 }
             }
+            else if (hitCollider.CompareTag("DropItem"))
+            {
+                DropItem dropItem = hitCollider.GetComponent<DropItem>();
+                if (dropItem != null)
+                {
+                    dropItem.StartMagnet(transform);
+                }
+            }
+        }
+    }
+
+    public void ApplyWeaponBoost(float duration, float multiplier)
+    {
+        StartCoroutine(WeaponBoostCoroutine(duration, multiplier));
+    }
+
+    private System.Collections.IEnumerator WeaponBoostCoroutine(float duration, float multiplier)
+    {
+        Shooting shooting = GetComponent<Shooting>();
+        if (shooting != null)
+        {
+            shooting.SetFireRateMultiplier(multiplier);
+            yield return new WaitForSeconds(duration);
+            shooting.SetFireRateMultiplier(1f);
         }
     }
 
     void ResetStats()
     {
         playerStats.maxHealth = 100f;
-
     }
 
     public void OnSelfHit()
@@ -97,5 +120,4 @@ public class PlayerController : MonoBehaviour, IObserver<HealthData>
         spriteRenderer.color = Color.red;
         spriteRenderer.color = Color.white; // Reset màu sắc sau khi bị hit
     }
-
 }

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2230737318082488156}
-  - component: {fileID: 5295319755178086510}
   - component: {fileID: 6481448270965642962}
   - component: {fileID: 4211458540867942468}
   m_Layer: 0
@@ -35,28 +34,6 @@ Transform:
   - {fileID: 8965094606449318116}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &5295319755178086510
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3200923451456400857}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2928ed143ec3aea4db908c9d973b865a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6481448270965642962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +52,7 @@ MonoBehaviour:
   bounceEaseDown: 5
   magnetSpeed: 10
   pickupRange: 0.5
-  experienceData: {fileID: 11400000, guid: 97cd06d55265977468d7ae837c77a73c, type: 2}
+  experience: 10
 --- !u!58 &4211458540867942468
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -190,7 +167,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -910450261
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1997803578, guid: 4343fb34b70dd8f48af264b90ea43303, type: 3}
