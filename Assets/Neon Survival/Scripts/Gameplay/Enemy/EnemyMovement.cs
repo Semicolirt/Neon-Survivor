@@ -12,12 +12,12 @@ public class EnemyMovement : MonoBehaviour
     /// <summary>
     /// Hàm này được EnemyBrain gọi mỗi frame để tịnh tiến quái vật.
     /// </summary>
-    public void Move(Vector3 direction, float speed)
+    public void Move(Vector2 velocity, float facingDirectionX)
     {
-        // Cập nhật vị trí tịnh tiến (Ép kiểu Vector3 về Vector2 để tránh lỗi ambiguous)
-        rb.MovePosition(rb.position + (Vector2)direction * speed * Time.deltaTime);
+        // Cập nhật vị trí tịnh tiến với vận tốc tổng hợp
+        rb.MovePosition(rb.position + velocity * Time.deltaTime);
 
-        // Lật mặt Sprite trái phải theo hướng di chuyển
-        FlipSprite.Flip(spriteTransform, direction.x);
+        // Lật mặt Sprite trái phải theo hướng mục tiêu chính (bỏ qua lực đẩy để tránh giật sprite)
+        FlipSprite.Flip(spriteTransform, facingDirectionX);
     }
 }

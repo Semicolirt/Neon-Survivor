@@ -1,5 +1,6 @@
 {
     "dotnet.defaultSolution": "Neon Survival.slnx",
+    "dotnet.dotnetPath": "C:/Program Files/dotnet/dotnet.exe",
     "dotrush.roslyn.dotnetSdkDirectory": "C:/Program Files/dotnet/sdk/10.0.100-rc.1.25451.107",
     "dotrush.msbuildProperties": {
         "DefineConstants": "UNITY_EDITOR"

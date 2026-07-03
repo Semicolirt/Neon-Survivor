@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 122581016743248791}
   - component: {fileID: 590072392519231887}
   - component: {fileID: 2396495390438081798}
+  - component: {fileID: 4885428323699581915}
   m_Layer: 6
   m_Name: Undead 1
   m_TagString: Untagged
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1274066203
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 613658156, guid: a878c9d7d2e4a0c47af2e7316bbfc4c0, type: 3}
@@ -250,3 +251,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
   enemyStatsSO: {fileID: 11400000, guid: b8664ba013622ab40884ef55b8177ea2, type: 2}
+--- !u!114 &4885428323699581915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793425273908105973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2666d2364a0e749a48dfe83da6aea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeparateSystem
+  settings: {fileID: 11400000, guid: 800d2a7f3cea58a42a75c3ff6d1bf63d, type: 2}

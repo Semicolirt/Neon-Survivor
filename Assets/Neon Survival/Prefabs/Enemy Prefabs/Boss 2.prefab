@@ -16,7 +16,9 @@ GameObject:
   - component: {fileID: 5892638230432258194}
   - component: {fileID: 8826065754830778687}
   - component: {fileID: 5122390173651692353}
-  m_Layer: 0
+  - component: {fileID: 9162539178263152824}
+  - component: {fileID: -7187359289740069575}
+  m_Layer: 6
   m_Name: Boss 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,3 +187,43 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9162539178263152824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920291618152744330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2666d2364a0e749a48dfe83da6aea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeparateSystem
+  settings: {fileID: 11400000, guid: 800d2a7f3cea58a42a75c3ff6d1bf63d, type: 2}
+--- !u!50 &-7187359289740069575
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920291618152744330}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

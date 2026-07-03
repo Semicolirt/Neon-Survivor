@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyMovement))]
 [RequireComponent(typeof(HealthComponent))]
 [RequireComponent(typeof(EnemyAttack))]
+[RequireComponent(typeof(SeparateSystem))]
 public class EnemyBrain : MonoBehaviour
 {
     private Transform playerTransform;
@@ -16,14 +17,16 @@ public class EnemyBrain : MonoBehaviour
     [Header("Optimization")]
     private float updatePathInterval = 0.5f; // Tối ưu: Cập nhật hướng đi mỗi 0.2s
     private float pathTimer;
-    private Vector3 currentDirection;
+    private Vector2 currentDirection;
     private HealthComponent healthComponent;
+    private SeparateSystem separateSystem;
 
     private void Awake()
     {
         enemyController = GetComponent<EnemyController>();
         enemyMovement = GetComponent<EnemyMovement>();
         healthComponent = GetComponent<HealthComponent>();
+        separateSystem = GetComponent<SeparateSystem>();
     }
 
     private void OnEnable()
@@ -62,8 +65,13 @@ public class EnemyBrain : MonoBehaviour
                 pathTimer = 0f;
             }
 
-            // Lệnh Move của Motor thì vẫn phải chạy liên tục mỗi frame để tịnh tiến toạ độ mượt mà
-            enemyMovement.Move(currentDirection, moveSpeed);
+            Vector2 separationForce = separateSystem.GetCurrentSeparationForce();
+
+            // Tính toán vận tốc cuối cùng (đã bao gồm tốc độ di chuyển)
+            Vector2 finalVelocity = currentDirection * moveSpeed + separationForce;
+
+            // Truyền finalVelocity và hướng nhìn (currentDirection.x) để tránh giật lật sprite
+            enemyMovement.Move(finalVelocity, currentDirection.x);
         }
     }
 
