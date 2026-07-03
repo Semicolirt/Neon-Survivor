@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dded739e8c729a468e0ad200754c625, type: 3}
-  m_Name: Health_Item_Data
+  m_Name: Magnet_Item_Data
   m_EditorClassIdentifier: Assembly-CSharp::DropItemDataSO
-  itemName: Health Potion
-  itemType: 0
-  prefab: {fileID: 914465007768838245, guid: 55a6ac8930878ad499d3333ecd21b94d, type: 3}
-  dropChance: 0.2
+  itemName: Magnet
+  itemType: 1
+  prefab: {fileID: 8782302392365399566, guid: 2855dbf95da045845a0f579506540330, type: 3}
+  dropChance: 0.1
   value: 10

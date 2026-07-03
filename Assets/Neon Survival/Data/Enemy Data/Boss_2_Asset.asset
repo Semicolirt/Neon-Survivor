@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b10ee90793c22d9498e0a2768e5e418e, type: 3}
-  m_Name: Boss_1_Asset
+  m_Name: Boss_2_Asset
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
   enemyName: Undead 3
   maxHealth: 400

@@ -2493,8 +2493,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DropItemSpawner
   dropItemList:
   - {fileID: 11400000, guid: fe9a8bef283cc7e459e15eea9002ff41, type: 2}
+  - {fileID: 11400000, guid: f2daacb27410aa54dbe911adbf2d1bb9, type: 2}
+  - {fileID: 11400000, guid: 98ffadd79436ba34aa9812da29c0c378, type: 2}
   initialPoolSize: 5
-  globalDropRate: 1
+  globalDropRate: 0.1
 --- !u!1 &994465335
 GameObject:
   m_ObjectHideFlags: 0
