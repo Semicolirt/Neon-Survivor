@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Wave_1_L1_Data
   m_EditorClassIdentifier: Assembly-CSharp::WaveDataSO
   waveName: Wave 1
-  waveDuration: 60
+  waveDuration: 3
   isBossWave: 0
   enemySpawns:
   - enemyPrefab: {fileID: 8793425273908105973, guid: 5f1d2391065fe5548ba7fb9682f56daa, type: 3}
     count: 100
-    spawnRate: 0.1
+    spawnRate: 0.5

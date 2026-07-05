@@ -118,10 +118,11 @@ public class DropItem : MonoBehaviour
 
             case DropItemType.WeaponBoost:
                 // Apply temporary attack boost to the player
+                float fireRateMultiplier = 0.1f; // Example: 0.1 means 10% faster fire rate
                 PlayerController pc = player.GetComponent<PlayerController>();
                 if (pc != null)
                 {
-                    pc.ApplyWeaponBoost(itemData.value, 0.5f); // 0.5f means twice as fast fire rate
+                    pc.ApplyWeaponBoost(itemData.value, fireRateMultiplier);
                 }
                 break;
         }

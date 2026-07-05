@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Default Local Group
   m_GUID: 2eb13153422e5574cab599c820fecdb6
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 7bc31eaeace6fcf44b804857c86744a8
+    m_Address: Assets/Neon Survival/Data/Game Setting/Level Data/Level_3_Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 03a3048075ae1cb4fb580f091bc009a5, type: 2}
   m_SchemaSet:

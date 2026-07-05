@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 100
   moveSpeed: 5
   damageMultiplier: 1
-  armor: 1
-  level: 0
-  currentExperience: 0
-  experienceToNextLevel: 100
+  armor: 0
+  level: 17
+  currentExperience: 35
+  experienceToNextLevel: 215

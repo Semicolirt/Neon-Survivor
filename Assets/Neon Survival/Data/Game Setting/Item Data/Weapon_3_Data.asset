@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponDataSO
   weaponName: 1
   weaponIcon: {fileID: -205726582, guid: 3a8e8caf60d9ae64ea7d0eb71537c994, type: 3}
-  fireRate: 0.5
+  fireRate: 0.3
   hasAutoAim: 0
   aimRadius: 5
