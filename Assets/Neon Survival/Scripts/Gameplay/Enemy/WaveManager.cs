@@ -69,10 +69,12 @@ public class WaveManager : MonoBehaviour
         int completedSpawns = 0;
         int totalSpawns = waveData.enemySpawns.Count;
 
+        List<Coroutine> spawnCoroutines = new List<Coroutine>();
+
         // Chạy coroutine cho từng group quái trong đợt này
         foreach (var spawnData in waveData.enemySpawns)
         {
-            StartCoroutine(SpawnEnemyGroup(spawnData, () => completedSpawns++));
+            spawnCoroutines.Add(StartCoroutine(SpawnEnemyGroup(spawnData, () => completedSpawns++)));
         }
 
         float timer = waveData.waveDuration;
@@ -106,6 +108,16 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitUntil(() => activeEnemyCount <= 0);
             }
         }
+
+        // Dọn dẹp: Dừng các coroutine spawn chưa chạy xong của wave hiện tại
+        foreach (var coroutine in spawnCoroutines)
+        {
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+        }
+        spawnCoroutines.Clear();
 
         // Dọn dẹp: Force-despawn tất cả quái còn sống mà KHÔNG tính vào activeEnemyCount
         EnemyController[] aliveEnemies = UnityEngine.Object.FindObjectsByType<EnemyController>(
