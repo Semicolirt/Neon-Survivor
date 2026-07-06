@@ -102,7 +102,20 @@ public class MainMenuUIManager : MonoBehaviour
         if (gameManager != null)
         {
             gameManager.currentLevelKey = levelKey;
-            gameManager.StartChangeState(gameManager.playingState);
+
+            // Fade out nhạc nền trước khi chuyển scene
+            MainMenuBGM bgm = FindAnyObjectByType<MainMenuBGM>();
+            if (bgm != null)
+            {
+                bgm.FadeOutAndThen(() =>
+                {
+                    gameManager.StartChangeState(gameManager.playingState);
+                });
+            }
+            else
+            {
+                gameManager.StartChangeState(gameManager.playingState);
+            }
         }
         else
         {

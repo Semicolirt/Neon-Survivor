@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(AudioSource))]
 public class Shooting : MonoBehaviour
 {
     [SerializeField] private WeaponDataSO weaponData;
@@ -14,9 +15,15 @@ public class Shooting : MonoBehaviour
     private float fireTimer = 0f;
     private float fireRateMultiplier = 1f;
 
+    private AudioSource audioSource;
+
     void Awake()
     {
         fireAction = inputAsset.FindActionMap("Player").FindAction("Fire");
+
+        // Khởi tạo AudioSource cho tiếng bắn
+        audioSource = GetComponent<AudioSource>();
+        audioSource.playOnAwake = false;
     }
 
     private void OnEnable()
@@ -54,5 +61,17 @@ public class Shooting : MonoBehaviour
         }
         Vector2 fireDirection = (Vector2)firePoint.right;
         bulletSpawner.SpawnBullet(fireDirection);
+
+        // Phát âm thanh bắn
+        PlayShootSound();
     }
-}
+
+    private void PlayShootSound()
+    {
+        if (weaponData.shootSound == null || audioSource == null) return;
+
+        // Random pitch để tạo biến thể âm thanh, tránh nghe lặp lại đơn điệu
+        audioSource.pitch = Random.Range(weaponData.shootPitchRange.x, weaponData.shootPitchRange.y);
+        audioSource.PlayOneShot(weaponData.shootSound, weaponData.shootVolume);
+    }
+}
